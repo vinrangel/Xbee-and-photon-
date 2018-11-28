@@ -1,0 +1,73 @@
+#include <ParticleSoftSerial.h>
+//#include <SoftwareSerial.h>
+SoftwareSerial Xbee(RX,TX);
+void setup() {
+
+Serial.begin(9600);
+Xbee.begin(9600);
+
+}
+
+void loop() {
+char str[50];
+char dato;
+Xbee.write("1");
+delay(3000);
+
+while (Xbee.available() >0){
+for (int i = 0; i < 50; i++ ) {
+      dato =Xbee.read();
+      str[ i ] = dato;
+   }      
+Particle.publish("NODO 1",str);
+
+}
+
+Xbee.write("2");
+delay(5000);
+
+while (Xbee.available() >0){
+for (int i = 0; i < 50; i++ ) {
+      dato =Xbee.read();
+      str[ i ] = dato;
+   }      
+Particle.publish("NODO 2",str);
+
+}
+
+Xbee.write("3");
+delay(5000);
+
+while (Xbee.available() >0){
+for (int i = 0; i < 50; i++ ) {
+      dato =Xbee.read();
+      str[ i ] = dato;
+   }      
+Particle.publish("NODO 3",str);
+
+}
+
+Xbee.write("4");
+delay(5000);
+
+while (Xbee.available() >0){
+for (int i = 0; i < 50; i++ ) {
+      dato =Xbee.read();
+      str[ i ] = dato;
+   }      
+Particle.publish("NODO 4",str);
+
+}
+
+Xbee.write("5");
+delay(5000);
+
+while (Xbee.available() >0){
+for (int i = 0; i < 50; i++ ) {
+      dato =Xbee.read();
+      str[ i ] = dato;
+   }      
+Particle.publish("NODO 5",str);
+
+}
+}
